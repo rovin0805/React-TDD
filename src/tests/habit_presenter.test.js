@@ -64,19 +64,29 @@ describe('HabitPresenter', () => {
     checkUpdateIsCalled();
   });
 
-  it('resets all habit counts to 0 and call update callback', () => {
-    presenter.reset(update);
-
-    expect(presenter.getHabits()[0].count).toBe(0);
-    expect(presenter.getHabits()[1].count).toBe(0);
-    checkUpdateIsCalled();
-  });
-
   it('throws an error when the max habits limit is exceeded', () => {
     presenter.add('Eating', update);
     expect(() => presenter.add('Eating', update)).toThrow(
       `The number of habits can't be more than ${maxHabits}.`
     );
+  });
+
+  describe('reset', () => {
+    it('sets all habit counts to 0 and call update callback', () => {
+      presenter.reset(update);
+
+      expect(presenter.getHabits()[0].count).toBe(0);
+      expect(presenter.getHabits()[1].count).toBe(0);
+      checkUpdateIsCalled();
+    });
+
+    it('does not create new object when count is 0', () => {
+      const habits = presenter.getHabits();
+      presenter.reset(update);
+      const updatedHabits = presenter.getHabits();
+
+      expect(updatedHabits[1]).toBe(habits[1]);
+    });
   });
 
   function checkUpdateIsCalled() {
