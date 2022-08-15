@@ -1,4 +1,4 @@
-import HabitPresenter from '../components/habit_presenter';
+import HabitPresenter from '../habit_presenter';
 
 describe('HabitPresenter', () => {
   const habits = [
