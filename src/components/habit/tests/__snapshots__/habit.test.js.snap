@@ -6,11 +6,13 @@ exports[`Habit Component renders 1`] = `
 >
   <span
     className="habit-name"
+    data-testid="habit-name"
   >
     Habit
   </span>
   <span
     className="habit-count"
+    data-testid="habit-count"
   >
     4
   </span>
@@ -35,10 +37,10 @@ exports[`Habit Component renders 1`] = `
   <button
     className="habit-button habit-delete"
     onClick={[Function]}
+    title="delete"
   >
     <i
       className="fas fa-trash"
-      title="delete"
     />
   </button>
 </li>

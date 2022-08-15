@@ -15,8 +15,12 @@ const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
 
   return (
     <li className='habit'>
-      <span className='habit-name'>{habit.name}</span>
-      <span className='habit-count'>{habit.count}</span>
+      <span className='habit-name' data-testid='habit-name'>
+        {habit.name}
+      </span>
+      <span className='habit-count' data-testid='habit-count'>
+        {habit.count}
+      </span>
       <button
         title='increase'
         className='habit-button habit-increase'
@@ -31,8 +35,12 @@ const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
       >
         <i className='fas fa-minus-square'></i>
       </button>
-      <button className='habit-button habit-delete' onClick={handleDelete}>
-        <i title='delete' className='fas fa-trash'></i>
+      <button
+        title='delete'
+        className='habit-button habit-delete'
+        onClick={handleDelete}
+      >
+        <i className='fas fa-trash'></i>
       </button>
     </li>
   );
